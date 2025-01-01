@@ -1,7 +1,9 @@
 services:
   backend:
     image: eos
-    build: ./backend
+    build:
+      dockerfile: Dockerfile
+      context: ./backend/
     networks:
       - webnet
     ports:
@@ -29,7 +31,9 @@ services:
     env_file:
       - .env
   frontend:
-    build: ./frontend
+    build:
+      dockerfile: Dockerfile
+      context: ./frontend/
     networks:
       - webnet
     depends_on:
@@ -43,7 +47,6 @@ services:
     tty: true
     volumes:
       - ./frontend:/app
-      - /app/node_modules
 networks:
   webnet:
 volumes:
