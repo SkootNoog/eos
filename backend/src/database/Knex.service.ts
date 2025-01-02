@@ -1,29 +1,4 @@
-//
-// import { Injectable } from '@nestjs/common';
-//
-// @Injectable()
-// export class DatabaseService {
-//
-//     knex = require('knex')({
-//         client: 'pg',
-//         connection: {
-//             host: process.env.DB_HOST,
-//             port: process.env.DB_PORT,
-//             database: process.env.DB_DATABASE_NAME,
-//             user: process.env.DB_USERNAME,
-//             password: process.env.DB_PASSWORD,
-//         },
-//     });
-// //
-// }
-
-import {
-    Inject,
-    Injectable,
-    Logger,
-    OnApplicationShutdown,
-} from '@nestjs/common';
-
+import {Inject, Injectable, Logger, OnApplicationShutdown} from '@nestjs/common';
 import { Knex } from 'knex';
 
 export const KnexConnection = '__KNEX_CONNECTION__';
