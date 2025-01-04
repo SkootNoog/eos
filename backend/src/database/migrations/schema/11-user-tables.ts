@@ -10,6 +10,10 @@ export async function buildUsersTable(knex: Knex): Promise<void> {
     });
 }
 
+export async function destroyUsersTable(knex: Knex): Promise<void> {
+    await knex.schema.dropTableIfExists('users');
+}
+
 export async function buildPlayerTable(knex: Knex): Promise<void> {
     await knex.schema.createTable('player', (table) => {
         table.increments('id').primary();
@@ -20,6 +24,10 @@ export async function buildPlayerTable(knex: Knex): Promise<void> {
         table.integer('user__id').unsigned();
         table.foreign('user__id').references('id').inTable('users');
     });
+}
+
+export async function destroyPlayerTable(knex: Knex): Promise<void> {
+    await knex.schema.dropTableIfExists('player');
 }
 
 
