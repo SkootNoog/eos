@@ -1,17 +1,24 @@
-import {Inject, Injectable, Logger, OnApplicationShutdown} from '@nestjs/common';
+import {Inject, Injectable, Logger, OnApplicationShutdown, OnModuleInit} from '@nestjs/common';
 import { Knex } from 'knex';
+import { Model } from 'objection';
+import { KnexMigratorService } from './knex-migrator.service';
 
 export const KnexConnection = '__KNEX_CONNECTION__';
 
 @Injectable()
-export class KnexService implements OnApplicationShutdown {
+export class KnexService implements OnApplicationShutdown, OnModuleInit {
     private readonly logger = new Logger(this.constructor.name);
 
     constructor(
         @Inject(KnexConnection)
         private readonly knexConn: Knex,
+        private readonly migrator: KnexMigratorService,
     ) {
+        Model.knex(knexConn);
+    }
 
+    async onModuleInit() {
+        await this.migrator.runMigrations(this.knexConn);
     }
 
     get db() {

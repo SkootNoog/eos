@@ -1,8 +1,9 @@
-import Knex from "knex";
-import {Entity} from "./entity.class";
-
-export class Adventurer extends Entity {
-    constructor(id: number, knex: ReturnType<typeof Knex>) {
-        super(id, knex)
-    }
-}
+// import Knex from "knex";
+// import {Entity} from "./entity.class";
+// import {KnexService} from "../database/Knex.service";
+//
+// export class Adventurer extends Entity {
+//     constructor(id: number, knexConn: KnexService) {
+//         super(id, knexConn)
+//     }
+// }

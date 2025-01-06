@@ -5,7 +5,7 @@ export async function buildEntityTypeTable(knex: Knex): Promise<void> {
     await knex.schema.createTable('entity_type', (table) => {
         table.increments('id').primary();
 
-        table.string('name');
+        table.string('name'); // adventurer, monster, npc
 
         table.timestamp('created_at').defaultTo(knex.fn.now());
         table.timestamp('deleted_at').defaultTo('9999-12-31 23:59:59');
