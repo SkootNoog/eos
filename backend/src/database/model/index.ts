@@ -1,5 +1,4 @@
-export { BaseModel } from './base.model';
-export { UserModel } from './user.model';
-export { PlayerModel } from './player.model';
-export { EntityModel } from './entity.model';
-export { EncounterModel } from './encounter.model';
+export { UserModel, UserModelType } from './user.model';
+export { PlayerModel, PlayerModelType } from './player.model';
+export { EntityModel, EntityModelType } from './entity.model';
+export { EncounterModel, EncounterModelType } from './encounter.model';

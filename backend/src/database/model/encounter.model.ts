@@ -4,7 +4,7 @@ import {Provider} from "@nestjs/common";
 
 export type EncounterJson = any;
 
-export class Encounter extends BaseModel {
+export class EncounterModel extends BaseModel {
     static get tableName() {
         return 'encounter';
     }
@@ -19,9 +19,9 @@ export class Encounter extends BaseModel {
     }
 }
 
-export declare type EncounterModel = typeof Encounter;
+export declare type EncounterModelType = typeof EncounterModel;
 
-export const EncounterProvider: Provider = {
-    provide: Encounter,
-    useValue: Encounter,
+export const EncounterModelProvider: Provider = {
+    provide: EncounterModel,
+    useValue: EncounterModel,
 };

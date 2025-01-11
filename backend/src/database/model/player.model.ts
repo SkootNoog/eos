@@ -1,18 +1,18 @@
 import {BaseModel} from "./base.model";
 import {Model, RelationMappings} from "objection";
-import {Entity} from "./entity.model";
-import {Encounter} from "./encounter.model";
+import {EntityModel} from "./entity.model";
+import {EncounterModel} from "./encounter.model";
 import {Provider} from "@nestjs/common";
 
-export class Player extends BaseModel {
+export class PlayerModel extends BaseModel {
     static get tableName() {
         return 'player';
     }
 
     name!: string;
     user__id!: number;
-    entities!: Entity[];
-    encounters!: Encounter[];
+    entities!: EntityModel[];
+    encounters!: EncounterModel[];
 
 
     static get relationMappings(): RelationMappings {
@@ -27,31 +27,31 @@ export class Player extends BaseModel {
             // },
             entities: {
                 relation: Model.HasManyRelation,
-                modelClass: Entity,
+                modelClass: EntityModel,
                 join: {
-                    from: `${Player.tableName}.id`,
-                    to: `${Entity.tableName}.player__id`,
+                    from: `${PlayerModel.tableName}.id`,
+                    to: `${EntityModel.tableName}.player__id`,
                 }
             },
             encounters: {
                 relation: Model.HasManyRelation,
-                modelClass: Encounter,
+                modelClass: EncounterModel,
                 join: {
-                    from: `${Player.tableName}.id`,
+                    from: `${PlayerModel.tableName}.id`,
                     through: { // Many to Many example!!!!!!!!!
-                        from: `${Player.tableName}_${Encounter.tableName}.player__id`,
-                        to: `${Player.tableName}_${Encounter.tableName}.encounter__id`,
+                        from: `${PlayerModel.tableName}_${EncounterModel.tableName}.player__id`,
+                        to: `${PlayerModel.tableName}_${EncounterModel.tableName}.encounter__id`,
                     },
-                    to: `${Encounter.tableName}.id`,
+                    to: `${EncounterModel.tableName}.id`,
                 },
             },
         };
     }
 }
 
-export declare type PlayerModel = typeof Player;
+export declare type PlayerModelType = typeof PlayerModel;
 
-export const PlayerProvider: Provider = {
-    provide: Player,
-    useValue: Player,
+export const PlayerModelProvider: Provider = {
+    provide: PlayerModel,
+    useValue: PlayerModel,
 };

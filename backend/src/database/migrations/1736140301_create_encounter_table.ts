@@ -11,10 +11,10 @@ export async function up(knex: Knex): Promise<void> {
 
     await knex.schema.createTable('player_encounter', (table) => {
         table.integer('player__id').unsigned();
-        // table.foreign('player__id').references('id').inTable('player');
+        table.foreign('player__id').references('id').inTable('player');
 
         table.integer('encounter__id').unsigned();
-        // table.foreign('encounter__id').references('id').inTable('encounter');
+        table.foreign('encounter__id').references('id').inTable('encounter');
     });
 }
 

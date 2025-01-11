@@ -2,7 +2,7 @@ import {BaseModel} from "./base.model";
 import {RelationMappings} from "objection";
 import {Provider} from "@nestjs/common";
 
-export class Entity extends BaseModel {
+export class EntityModel extends BaseModel {
     static get tableName() {
         return 'entity';
     }
@@ -31,9 +31,11 @@ export class Entity extends BaseModel {
     }
 }
 
-export declare type EntityModel = typeof Entity;
+// This is for type hinting the Objection model functions/etc.
+export declare type EntityModelType = typeof EntityModel;
+// The EntityModel is the type of the Entity class, which is the Objection model
 
-export const EntityProvider: Provider = {
-    provide: Entity,
-    useValue: Entity,
+export const EntityModelProvider: Provider = {
+    provide: EntityModel,
+    useValue: EntityModel,
 };

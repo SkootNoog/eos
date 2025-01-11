@@ -5,6 +5,7 @@ export async function up(knex: Knex): Promise<void> {
         table.increments('id').primary();
 
         table.string('name');
+        table.string('entity_type');
         table.smallint('level');
 
         table.smallint('hit_points').notNullable();
@@ -17,8 +18,8 @@ export async function up(knex: Knex): Promise<void> {
         table.timestamp('deletedAt').nullable();
         table.timestamps(true, true, true);
 
-        table.integer('player__id').unsigned();
-        // table.foreign('player__id').references('id').inTable('player');
+        table.integer('player__id').unsigned().nullable();
+        table.foreign('player__id').references('id').inTable('player');
     });
 }
 

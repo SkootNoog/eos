@@ -1,39 +1,39 @@
 import {BaseModel} from "./base.model";
 import {Model, RelationMappings} from "objection";
-import {Player} from "./player.model";
+import {PlayerModel} from "./player.model";
 import {Provider} from "@nestjs/common";
 
-export class User extends BaseModel {
+export class UserModel extends BaseModel {
     static get tableName() {
         return 'users';
     }
 
     username!: string;
     email!: string;
-    players!: Player[];
+    players!: PlayerModel[];
 
 
     static get relationMappings(): RelationMappings {
         return {
             players: {
                 relation: Model.HasManyRelation,
-                modelClass: Player,
+                modelClass: PlayerModel,
                 join: {
-                    from: `${User.tableName}.id`,
+                    from: `${UserModel.tableName}.id`,
                     // through: { // Many to Many example!!!!!!!!!
                     //     from: `${User.tableName}_${Player.tableName}.user__id`,
                     //     to: `${User.tableName}_${Player.tableName}.player__id`,
                     // },
-                    to: `${Player.tableName}.id`,
+                    to: `${PlayerModel.tableName}.id`,
                 },
             },
         };
     }
 }
 
-export declare type UserModel = typeof User;
+export declare type UserModelType = typeof UserModel;
 
-export const UserProvider: Provider = {
-    provide: User,
-    useValue: User,
+export const UserModelProvider: Provider = {
+    provide: UserModel,
+    useValue: UserModel,
 };

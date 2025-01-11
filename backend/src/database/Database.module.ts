@@ -1,17 +1,17 @@
 import { Global, Module } from '@nestjs/common';
 import Knex from 'knex';
 import {KnexService, KnexConnection} from "./Knex.service";
-import {EncounterProvider} from "./model/encounter.model";
-import {PlayerProvider} from "./model/player.model";
-import {UserProvider} from "./model/user.model";
-import {EntityProvider} from "./model/entity.model";
+import {EncounterModelProvider} from "./model/encounter.model";
+import {PlayerModelProvider} from "./model/player.model";
+import {UserModelProvider} from "./model/user.model";
+import {EntityModelProvider} from "./model/entity.model";
 import {KnexMigratorService} from "./knex-migrator.service";
 
 const models = [
-    UserProvider,
-    PlayerProvider,
-    EntityProvider,
-    EncounterProvider,
+    UserModelProvider,
+    PlayerModelProvider,
+    EntityModelProvider,
+    EncounterModelProvider,
 ];
 
 @Global()

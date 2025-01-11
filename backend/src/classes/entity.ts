@@ -1,3 +1,24 @@
+import {EntityModel} from "@models";
+import {Encounter, Turnable} from "./encounter";
+
+export class Entity implements Turnable {
+
+    constructor(private entity: EntityModel) {
+        // entity.hit_points
+        // entity.$query().findById(1);
+    }
+
+    takeTurn = (encounter: Encounter) => {
+
+    }
+
+    attack = (target: Entity) => {
+
+    }
+
+}
+
+
 // import {Encounter} from "./encounter.class";
 // import {KnexService} from "../database/Knex.service";
 //
